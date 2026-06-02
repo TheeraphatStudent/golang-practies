@@ -1,4 +1,4 @@
-package ilovemyjobPkg
+package main
 
 import (
 	"encoding/json"
@@ -35,7 +35,7 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(resp)
 }
 
-func HttpHandle() {
+func main() {
 	http.HandleFunc("/hello", helloHandler)
 
 	fmt.Println("Server running on :8080")

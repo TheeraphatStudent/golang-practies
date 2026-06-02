@@ -1,4 +1,4 @@
-package ilovemyjobPkg
+package main
 
 import (
 	"fmt"
@@ -30,7 +30,10 @@ func PrintArea(s Shape) {
 	fmt.Printf("Area = %.2f\n", s.Area())
 }
 
-func InterfaceFunc(r Rectangle, c Circle) {
+func main() {
+	r := Rectangle{Width: 5, Height: 3}
+	c := Circle{Radius: 4}
+	
 	PrintArea(r)
 	PrintArea(c)
 }

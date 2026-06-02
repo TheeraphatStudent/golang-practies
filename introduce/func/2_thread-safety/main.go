@@ -1,4 +1,4 @@
-package ilovemyjobPkg
+package main
 
 import (
 	"fmt"
@@ -22,7 +22,7 @@ func (c *SafeCounter) Value() int {
 	return c.count
 }
 
-func ThreadSafety() {
+func main() {
 	c := &SafeCounter{}
 	var wg sync.WaitGroup
 

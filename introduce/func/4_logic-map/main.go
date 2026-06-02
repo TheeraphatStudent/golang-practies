@@ -1,4 +1,4 @@
-package ilovemyjobPkg
+package main
 
 import "fmt"
 
@@ -18,7 +18,7 @@ func TwoSum(nums []int, target int) []int {
 	return nil
 }
 
-func LogicMap() {
+func main() {
 	nums := []int{2, 7, 11, 15}
 	target := 9
 

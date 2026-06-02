@@ -1,4 +1,4 @@
-package ilovemyjobPkg
+package main
 
 import (
 	"fmt"
@@ -26,4 +26,8 @@ func RunWorkers(numWorkers int, numJobs int) {
 	}
 	close(jobs)
 	wg.Wait()
+}
+
+func main() {
+	RunWorkers(3, 9)
 }
