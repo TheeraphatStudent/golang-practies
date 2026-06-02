@@ -1,0 +1,88 @@
+info:
+  name: Basic Http Handle
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/hello"
+  body:
+    type: json
+    data: '{"name": "Somchai"}'
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://localhost:8080
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 405 - Method Not Allow
+    request:
+      url: "{{baseUrl}}/hello"
+      method: GET
+    response:
+      status: 405
+      statusText: Method Not Allowed
+      headers:
+        - name: content-type
+          value: text/plain; charset=utf-8
+        - name: x-content-type-options
+          value: nosniff
+        - name: date
+          value: Tue, 02 Jun 2026 01:30:11 GMT
+        - name: content-length
+          value: "19"
+      body:
+        type: text
+        data: |
+          Method Not Allowed
+  - name: 400 - Bad Request
+    request:
+      url: "{{baseUrl}}/hello"
+      method: POST
+    response:
+      status: 400
+      statusText: Bad Request
+      headers:
+        - name: content-type
+          value: text/plain; charset=utf-8
+        - name: x-content-type-options
+          value: nosniff
+        - name: date
+          value: Tue, 02 Jun 2026 01:31:01 GMT
+        - name: content-length
+          value: "12"
+      body:
+        type: text
+        data: |
+          Bad Request
+  - name: 200 - Ok
+    request:
+      url: "{{baseUrl}}/hello"
+      method: POST
+      body:
+        type: json
+        data: '{"name": "Somchai"}'
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: content-type
+          value: application/json
+        - name: date
+          value: Tue, 02 Jun 2026 01:33:00 GMT
+        - name: content-length
+          value: "28"
+      body:
+        type: json
+        data: |-
+          {
+            "message": "Hello Somchai"
+          }
